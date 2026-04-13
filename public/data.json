@@ -1,8 +1,8 @@
 [
   {
     "id": 1,
-    "name": "John Doe",
-    "picture": "https://example.com/photo1.jpg",
+    "name": "David Kim",
+    "picture": "https://i.ibb.co.com/5gPkbdn1/Ellipse-1.png",
     "email": "john@example.com",
     "days_since_contact": 12,
     "status": "overdue",
@@ -13,8 +13,8 @@
   },
   {
     "id": 2,
-    "name": "Sarah Smith",
-    "picture": "https://example.com/photo2.jpg",
+    "name": "Emma Wilson ",
+    "picture": "https://i.ibb.co.com/7JDpScpR/Ellipse-1-1.png",
     "email": "sarah@example.com",
     "days_since_contact": 5,
     "status": "active",
@@ -25,8 +25,8 @@
   },
   {
     "id": 3,
-    "name": "Michael Brown",
-    "picture": "https://example.com/photo3.jpg",
+    "name": "Lisa Nakamura",
+    "picture": "https://i.ibb.co.com/JRXzK7Xm/Ellipse-1-2.png",
     "email": "michael@example.com",
     "days_since_contact": 20,
     "status": "overdue",
@@ -37,8 +37,8 @@
   },
   {
     "id": 4,
-    "name": "Emily Johnson",
-    "picture": "https://example.com/photo4.jpg",
+    "name": "James Wright",
+    "picture": "https://i.ibb.co.com/FGgbjVD/Ellipse-1-3.png",
     "email": "emily@example.com",
     "days_since_contact": 2,
     "status": "active",
@@ -49,8 +49,8 @@
   },
   {
     "id": 5,
-    "name": "David Wilson",
-    "picture": "https://example.com/photo5.jpg",
+    "name": "David Kim",
+    "picture": "https://i.ibb.co.com/nN6CXtjF/Ellipse-1-4.png",
     "email": "david@example.com",
     "days_since_contact": 30,
     "status": "overdue",
@@ -61,8 +61,8 @@
   },
   {
     "id": 6,
-    "name": "Sophia Martinez",
-    "picture": "https://example.com/photo6.jpg",
+    "name": "Emma Wilson",
+    "picture": "https://i.ibb.co.com/p67x9Khg/Ellipse-1-5.png",
     "email": "sophia@example.com",
     "days_since_contact": 8,
     "status": "active",
@@ -73,8 +73,8 @@
   },
   {
     "id": 7,
-    "name": "James Anderson",
-    "picture": "https://example.com/photo7.jpg",
+    "name": "Lisa Nakamura",
+    "picture": "https://i.ibb.co.com/V0cVDpz5/Ellipse-1-6.png",
     "email": "james@example.com",
     "days_since_contact": 18,
     "status": "overdue",
@@ -85,8 +85,8 @@
   },
   {
     "id": 8,
-    "name": "Olivia Thomas",
-    "picture": "https://example.com/photo8.jpg",
+    "name": "James Wright",
+    "picture": "https://i.ibb.co.com/GfQ4MGpy/Ellipse-1-7.png",
     "email": "olivia@example.com",
     "days_since_contact": 1,
     "status": "active",
@@ -98,7 +98,7 @@
   {
     "id": 9,
     "name": "William Taylor",
-    "picture": "https://example.com/photo9.jpg",
+    "picture": "https://i.ibb.co.com/LXhf8VGP/Ellipse-1-8.png",
     "email": "william@example.com",
     "days_since_contact": 25,
     "status": "overdue",
@@ -109,14 +109,26 @@
   },
   {
     "id": 10,
-    "name": "Ava Lee",
-    "picture": "https://example.com/photo10.jpg",
+    "name": "Emma Wilson",
+    "picture": "https://i.ibb.co.com/7xvp3zw9/Ellipse-1-9.png",
     "email": "ava@example.com",
     "days_since_contact": 6,
     "status": "active",
     "tags": ["friend"],
     "bio": "Met at a workshop.",
     "goal": 10,
+    "next_due_date": "2025-04-19"
+  },
+  {
+    "id": 11,
+    "name": "Lisa Nakamura",
+    "picture": "https://i.ibb.co.com/ynj66Qxn/Ellipse-1-10.png",
+    "email": "Lisa@example.com",
+    "days_since_contact": 5,
+    "status": "active",
+    "tags": ["friend"],
+    "bio": "Met at a workshop.",
+    "goal": 12,
     "next_due_date": "2025-04-19"
   }
 ]
