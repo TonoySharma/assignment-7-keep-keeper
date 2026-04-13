@@ -4,6 +4,7 @@ import Homepage from "../pages/homepage/Homepage";
 import ErrorPage from "../pages/errorPage/ErrorPage";
 import TimeLine from "../pages/timeline/TimeLine";
 import StatsChart from "../pages/stats/StatsChart";
+import CardDetails from "../pages/cardDetails/CardDetails";
 
 export const router = createBrowserRouter([
   {
@@ -12,17 +13,22 @@ export const router = createBrowserRouter([
     children:[
       {
         index: true,
-        element: <Homepage></Homepage>
+        element: <Homepage></Homepage>,
       },
       {
         path: "/timeline",
-        element: <TimeLine></TimeLine>
+        element: <TimeLine></TimeLine>,
       },
       {
         path:"/stats",
-        element: <StatsChart></StatsChart>
+        element: <StatsChart></StatsChart>,
+      },
+      {
+        path: "/CardDetails/:id",
+        element:<CardDetails></CardDetails>,
+        loader: () => fetch("/data.json")
       }
     ],
-    errorElement:<ErrorPage></ErrorPage>
+    errorElement:<ErrorPage></ErrorPage>,
   },
 ]);

@@ -33,7 +33,7 @@ const Footer = () => {
 
                 </div>
 
-                {/* Bottom Section */}
+                {/* Bottom  */}
                 <div className='border-t border-gray-500 mt-10 pt-5 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-300'>
                     
                     <h2 className='text-center md:text-left'>

@@ -1,5 +1,6 @@
 
-import React, { use } from 'react';
+import { use } from 'react';
+import KeeperCard from '../components/ui/KeeperCard';
 
 
 const cardPromise =fetch('/data.json').then(res=> res.json())
@@ -7,10 +8,10 @@ const cardPromise =fetch('/data.json').then(res=> res.json())
 const AllCard = () => {
 
 const Cards = use(cardPromise)
-console.log(Cards, " Cards Data")
+// console.log(Cards, " Cards Data")
 
     return (
-        <div className='container mx-auto mt-10 my-10'>
+        <div className='container mx-auto mt-10'>
            {/* Count Card */}
             <div className='flex gap-6 items-center justify-center mb-10'>
                  {/* card 1 */}
@@ -53,44 +54,9 @@ console.log(Cards, " Cards Data")
 
                 <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6'>
     {
-        Cards.map(Card => {
+        Cards.map((Card, ind )=> {
             return (
-                <div className=" bg-gray-100 shadow-sm rounded-2xl border border-gray-300 p-5 hover:shadow-xl">
-                    
-                    <div className="flex flex-col items-center text-center space-y-3">
-                        
-                        <img
-                            src={Card.picture}
-                            className="w-25 h-25 rounded-full object-cover border-2 border-gray-300" />
-
-                        <h2 className="text-lg font-bold">{Card.name}</h2>
-
-                        <p className="text-sm text-gray-500">
-                            Days: {Card.days_since_contact}
-                        </p>
-
-                        <p className={`text-sm font-semibold  ${
-                            Card.status === "overdue"
-                                ? "text-red-600 bg-red-200 py-1 px-3 rounded-full border"
-                                : "text-yellow-600 bg-yellow-100 py-1 px-3 rounded-full border"
-                        }`}>
-                            {Card.status}
-                        </p>
-
-                        <div className="flex flex-wrap justify-center gap-5 mt-2">
-                            {
-                                Card.tags.map((tag, index) => (
-                                    <span
-                                        key={index}
-                                        className="text-xs bg-green-100 text-green-700 px-3 py-1 rounded-full border ">
-                                        {tag}
-                                    </span>
-                                ))
-                            }
-                        </div>
-
-                    </div>
-                </div>
+            <KeeperCard key={ind} Card={Card} ></KeeperCard>
             );
         })
     }
