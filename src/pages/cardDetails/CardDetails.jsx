@@ -1,15 +1,20 @@
+/* eslint-disable react-hooks/rules-of-hooks */
+
+import { useContext } from 'react';
 import { HiOutlineBellSnooze } from 'react-icons/hi2';
 import { IoVideocamOutline } from 'react-icons/io5';
 import { LuPhoneCall } from 'react-icons/lu';
 import { MdOutlineTextsms } from 'react-icons/md';
 import { RiDeleteBin6Line, RiInboxArchiveLine } from 'react-icons/ri';
 import { useLoaderData, useParams } from 'react-router';
+import { AllCardContext } from '../../context/AllCardProvider';
 
 const CardDetails = () => {
   const { id } = useParams();
   const Cards = useLoaderData();
 
   const expectedCard = Cards.find((card) => card.id === Number(id));
+  // console.log(expectedCard ,"expectedCard");
 
   if (!expectedCard) {
     return (
@@ -18,6 +23,71 @@ const CardDetails = () => {
       </p>
     );
   }
+const { callHistory, setCallHistory } = useContext(AllCardContext);
+
+const date = new Date();
+
+const formattedDate = date.toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+
+// Call 
+const newCall = (card) => {
+  const newCallDetails = {
+    id: card.id,
+    title: "Call",
+    name: card.name,
+    date: formattedDate,
+  };
+setCallHistory([...callHistory, newCallDetails]);
+
+};
+
+       // text
+const newText = (card) => {
+ const newCallDetails = {
+    id: card.id,
+    title: "Text",
+    name: card.name,
+    date: formattedDate,
+  };
+setCallHistory([...callHistory, newCallDetails]);
+};
+    // Video
+const newVideo = (card) => {
+ const newCallDetails = {
+    id: card.id,
+    title: "Video",
+    name: card.name,
+    date: formattedDate,
+  };
+setCallHistory([...callHistory, newCallDetails]);
+
+}
+
+
+
+  
+  // const AllCardContext = useContext(AllCardContext)
+ 
+  // const [storedCards, setStoredCards] = useState([]);
+
+  //  const handleCall = (currentCard) =>{
+  //  console.log(currentCard);
+
+  //   const isExistCard = storedCards.find((card) => card.id === currentCard. id);
+
+  //   if(isExistCard){
+  //       alert("card already exist");
+  //   }else{
+  //       setStoredCards([...storedCards, currentCard])
+  //   }
+  //   console.log(currentCard,storedCards, "cardId");
+  //  };
+
+
 
   return (
     <div className='container mx-auto flex flex-col lg:flex-row gap-8 py-6'>
@@ -120,25 +190,23 @@ const CardDetails = () => {
           </button>
         </div>
 
-        {/* QUICK Call */}
+        {/* Button  */}
         <div className='bg-white border rounded-2xl shadow p-5 border-gray-300'>
           <h1 className='font-semibold text-lg text-green-600 mb-4'>Quick Check-In</h1>
 
-          <div className='grid grid-cols-3 gap-4'>
+          <div className='grid grid-cols-4 gap-4 justify-center items-center'>
             
-            <div className='group border border-gray-300 rounded-xl p-4 flex flex-col items-center cursor-pointer hover:bg-green-100 transition'>
-              <LuPhoneCall className='text-xl group-hover:scale-110 transition' />
-              <p className='text-sm mt-2 font-semibold'>Call</p>
+            <div className=' rounded-xl p-4 flex flex-col items-center'>
+              
+             <button onClick={() => newCall(expectedCard)}className="btn btn-wide h-15 rounded-full hover:bg-green-200"><LuPhoneCall className='text-xl' />Call</button>
             </div>
 
-            <div className='group border border-gray-300 rounded-xl p-4 flex flex-col items-center cursor-pointer hover:bg-blue-100 transition'>
-              <MdOutlineTextsms className='text-xl group-hover:scale-110 transition' />
-              <p className='text-sm mt-2 font-semibold'>Text</p>
+            <div className=' rounded-xl p-4 flex flex-col items-center'>
+            <button onClick={() => newText(expectedCard)} className="btn btn-wide h-15 rounded-full hover:bg-purple-200"><MdOutlineTextsms className='text-xl mt-1' />Text</button>
             </div>
 
-            <div className='group border border-gray-300 rounded-xl p-4 flex flex-col items-center cursor-pointer hover:bg-purple-100 transition'>
-              <IoVideocamOutline className='text-xl group-hover:scale-110 transition' />
-              <p className='text-sm mt-2 font-semibold'>Video</p>
+            <div className=' rounded-xl p-4 flex flex-col items-center'>
+              <button onClick={() => newVideo(expectedCard)} className="btn btn-wide h-15  rounded-full hover:bg-blue-200"><IoVideocamOutline className='text-xl' />Video</button>
             </div>
 
           </div>
@@ -150,3 +218,5 @@ const CardDetails = () => {
 };
 
 export default CardDetails;
+
+// onClick={()=> handleCall(expectedCard)}
