@@ -9,7 +9,7 @@
     "tags": ["college", "close friend"],
     "bio": "Met in university. Love hiking together.",
     "goal": 14,
-    "next_due_date": "2025-07-20"
+    "next_due_date": "07-20-2025"
   },
   {
     "id": 2,
@@ -21,7 +21,7 @@
     "tags": ["office", "teammate"],
     "bio": "Works in the same department.",
     "goal": 10,
-    "next_due_date": "2025-04-18"
+    "next_due_date": "04-18-2025"
   },
   {
     "id": 3,
@@ -33,7 +33,7 @@
     "tags": ["gym", "buddy"],
     "bio": "Workout partner from gym.",
     "goal": 7,
-    "next_due_date": "2025-04-10"
+    "next_due_date": "04-10-2025"
   },
   {
     "id": 4,
@@ -45,7 +45,7 @@
     "tags": ["family"],
     "bio": "Cousin from mother's side.",
     "goal": 15,
-    "next_due_date": "2025-04-25"
+    "next_due_date": "04-25-2025"
   },
   {
     "id": 5,
@@ -57,7 +57,7 @@
     "tags": ["business"],
     "bio": "Client from last project.",
     "goal": 10,
-    "next_due_date": "2025-04-05"
+    "next_due_date": "04-05-2025"
   },
   {
     "id": 6,
@@ -69,7 +69,7 @@
     "tags": ["travel"],
     "bio": "Met during a trip abroad.",
     "goal": 12,
-    "next_due_date": "2025-04-22"
+    "next_due_date": "04-22-2025"
   },
   {
     "id": 7,
@@ -81,7 +81,7 @@
     "tags": ["school"],
     "bio": "High school friend.",
     "goal": 14,
-    "next_due_date": "2025-04-12"
+    "next_due_date": "04-12-2025"
   },
   {
     "id": 8,
@@ -93,7 +93,7 @@
     "tags": ["neighbor"],
     "bio": "Lives next door.",
     "goal": 20,
-    "next_due_date": "2025-04-30"
+    "next_due_date": "04-30-2025"
   },
   {
     "id": 9,
@@ -105,7 +105,7 @@
     "tags": ["mentor"],
     "bio": "Guides me in career decisions.",
     "goal": 30,
-    "next_due_date": "2025-04-08"
+    "next_due_date": "04-08-2025"
   },
   {
     "id": 10,
@@ -117,7 +117,7 @@
     "tags": ["friend"],
     "bio": "Met at a workshop.",
     "goal": 10,
-    "next_due_date": "2025-04-19"
+    "next_due_date": "04-19-2025"
   },
   {
     "id": 11,
@@ -129,6 +129,6 @@
     "tags": ["friend"],
     "bio": "Met at a workshop.",
     "goal": 12,
-    "next_due_date": "2025-04-19"
+    "next_due_date": "04-19-2025"
   }
 ]

@@ -24,9 +24,9 @@ export const router = createBrowserRouter([
         element: <StatsChart></StatsChart>,
       },
       {
-        path: "/CardDetails/:id",
+        path: "/cardDetails/:id",
         element:<CardDetails></CardDetails>,
-        loader: () => fetch("/data.json")
+        loader: ()=> fetch("/data.json")
       }
     ],
     errorElement:<ErrorPage></ErrorPage>,

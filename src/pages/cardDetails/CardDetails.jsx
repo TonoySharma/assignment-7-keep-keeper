@@ -1,22 +1,152 @@
-
+import { HiOutlineBellSnooze } from 'react-icons/hi2';
+import { IoVideocamOutline } from 'react-icons/io5';
+import { LuPhoneCall } from 'react-icons/lu';
+import { MdOutlineTextsms } from 'react-icons/md';
+import { RiDeleteBin6Line, RiInboxArchiveLine } from 'react-icons/ri';
 import { useLoaderData, useParams } from 'react-router';
 
 const CardDetails = () => {
-const {id} = useParams();
-console.log(id ,'id');
+  const { id } = useParams();
+  const Cards = useLoaderData();
 
-const Cards = useLoaderData();
-console.log(Cards, "Cards");
+  const expectedCard = Cards.find((card) => card.id === Number(id));
 
-const expectedCard = Cards.find((card) => card.id === Number(id))
-console.log(expectedCard, "expectedCard")
-
-
+  if (!expectedCard) {
     return (
-        <div>
-            Card Details
-        </div>
+      <p className="text-center mt-10 text-red-500">
+        Card not found
+      </p>
     );
+  }
+
+  return (
+    <div className='container mx-auto flex flex-col lg:flex-row gap-8 py-6'>
+
+      {/* Card details */}
+      <div className='space-y-4'>
+        
+        {/* PROFILE CARD */}
+        <div className="card bg-gray-100 w-80 shadow-md hover:shadow-2xl transition-all duration-300 border border-gray-200 rounded-2xl">
+          
+          <figure className="px-10 pt-10">
+            <img
+              src={expectedCard.picture}
+              alt=""
+              className="rounded-full w-25 h-25 object-cover ring-4 ring-indigo-100"
+            />
+          </figure>
+
+          <div className="card-body items-center text-center">
+            <h2 className="card-title text-lg">{expectedCard.name}</h2>
+
+            <p className={`text-xs font-semibold border ${
+              expectedCard.status === "overdue"
+                ? "text-red-600 bg-red-100 px-3 py-1 rounded-full"
+                : "text-yellow-600 bg-yellow-100 px-3 py-1 rounded-full"
+            }`}>
+              {expectedCard.status}
+            </p>
+
+            <div className="flex flex-wrap justify-center gap-2 mt-2">
+              {
+                expectedCard.tags.map((tag, index) => (
+                  <span
+                    key={index}
+                    className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full border">
+                    {tag}
+                  </span>
+                ))
+              }
+            </div>
+
+            <p className='text-sm text-gray-600'>{expectedCard.bio}</p>
+            <p className='text-sm text-gray-500'>{expectedCard.email}</p>
+          </div>
+        </div>
+
+        {/* BUTTONS */}
+        <div className='flex flex-col gap-3 w-full max-w-xs'>
+          
+          <button className="flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-medium shadow hover:scale-105 hover:shadow-lg transition duration-300 cursor-not-allowed">
+            <HiOutlineBellSnooze className='text-xl' />
+            Snooze 2 weeks
+          </button>
+
+          <button className="flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-green-50 text-green-700 font-medium hover:bg-green-100 transition duration-300 cursor-not-allowed border">
+            <RiInboxArchiveLine className='text-xl' />
+            Archive
+          </button>
+
+          <button className="flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-red-50 text-red-600 font-medium hover:bg-red-100 transition duration-300 cursor-not-allowed border">
+            <RiDeleteBin6Line className='text-xl' />
+            Delete
+          </button>
+
+        </div>
+      </div>
+
+      {/* All RIGHT SIDE */}
+      <div className='flex-1 space-y-6'>
+
+        {/* STATS */}
+        <div className='grid grid-cols-1 md:grid-cols-3 gap-5'>
+          
+          <div className='bg-white p-5 text-center rounded-2xl shadow border border-gray-300'>
+            <h1 className='text-3xl font-bold text-green-600'>{expectedCard.days_since_contact}</h1>
+            <p className='text-gray-500 text-sm mt-2'>Days Since Contact</p>
+          </div>
+
+          <div className='bg-white p-5 text-center rounded-2xl shadow border border-gray-300'>
+            <h1 className='text-3xl font-bold text-indigo-600'>{expectedCard.goal}</h1>
+            <p className='text-gray-500 text-sm mt-2'>Goal (Days)</p>
+          </div>
+
+          <div className='bg-white p-5 text-center rounded-2xl shadow border border-gray-300'>
+            <h1 className='text-2xl font-semibold text-purple-500 '>{expectedCard.next_due_date}</h1>
+            <p className='text-gray-500 text-sm mt-2'>Next Due</p>
+          </div>
+
+        </div>
+
+        {/* GOAL */}
+        <div className='bg-white border rounded-2xl shadow p-5 flex justify-between items-center border-gray-300'>
+          <div>
+            <h2 className='text-lg font-semibold text-green-600'>Relationship Goal</h2>
+            <p className='text-sm text-gray-500'>Connect every <span className='font-bold border-b'>{expectedCard.goal}Goal</span></p>
+          </div>
+
+          <button className="px-4 py-2 rounded-xl bg-green-100 text-green-700 hover:bg-green-200 transition cursor-not-allowed border border-green-300">
+            Edit
+          </button>
+        </div>
+
+        {/* QUICK Call */}
+        <div className='bg-white border rounded-2xl shadow p-5 border-gray-300'>
+          <h1 className='font-semibold text-lg text-green-600 mb-4'>Quick Check-In</h1>
+
+          <div className='grid grid-cols-3 gap-4'>
+            
+            <div className='group border border-gray-300 rounded-xl p-4 flex flex-col items-center cursor-pointer hover:bg-green-100 transition'>
+              <LuPhoneCall className='text-xl group-hover:scale-110 transition' />
+              <p className='text-sm mt-2 font-semibold'>Call</p>
+            </div>
+
+            <div className='group border border-gray-300 rounded-xl p-4 flex flex-col items-center cursor-pointer hover:bg-blue-100 transition'>
+              <MdOutlineTextsms className='text-xl group-hover:scale-110 transition' />
+              <p className='text-sm mt-2 font-semibold'>Text</p>
+            </div>
+
+            <div className='group border border-gray-300 rounded-xl p-4 flex flex-col items-center cursor-pointer hover:bg-purple-100 transition'>
+              <IoVideocamOutline className='text-xl group-hover:scale-110 transition' />
+              <p className='text-sm mt-2 font-semibold'>Video</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  );
 };
 
 export default CardDetails;
