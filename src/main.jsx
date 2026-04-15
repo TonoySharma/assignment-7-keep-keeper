@@ -4,6 +4,7 @@ import './index.css'
 import { RouterProvider } from 'react-router'
 import { router } from './routes/Routes'
 import AllCardProvider from './context/AllCardProvider'
+import { ToastContainer } from 'react-toastify'
 
 
 
@@ -15,7 +16,7 @@ createRoot(document.getElementById('root')).render(
       
          <RouterProvider router={router} />
 
-        {/* <ToastContainer /> */}
+        <ToastContainer />
      </AllCardProvider>
 
   </StrictMode>

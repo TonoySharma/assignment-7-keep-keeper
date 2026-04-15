@@ -49,9 +49,9 @@
   },
   {
     "id": 5,
-    "name": "David Kim",
+    "name": "Priya Sharma",
     "picture": "https://i.ibb.co.com/nN6CXtjF/Ellipse-1-4.png",
-    "email": "david@example.com",
+    "email": "Priya@example.com",
     "days_since_contact": 30,
     "status": "overdue",
     "tags": ["business"],

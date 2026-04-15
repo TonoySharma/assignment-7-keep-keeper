@@ -8,6 +8,7 @@ import { MdOutlineTextsms } from 'react-icons/md';
 import { RiDeleteBin6Line, RiInboxArchiveLine } from 'react-icons/ri';
 import { useLoaderData, useParams } from 'react-router';
 import { AllCardContext } from '../../context/AllCardProvider';
+import { Slide, toast } from 'react-toastify';
 
 const CardDetails = () => {
   const { id } = useParams();
@@ -41,8 +42,22 @@ const newCall = (card) => {
     name: card.name,
     date: formattedDate,
   };
-setCallHistory([...callHistory, newCallDetails]);
+  
+  // if (isExist) {
+  //   toast.error("Already called!",{
+  //     theme: "dark",
+  //     transition: Slide,
+  //     autoClose: 1700,
+  //   });
+  //   return;
+  // }
 
+setCallHistory([...callHistory, newCallDetails]);
+  toast.success(`Call with ${card.name}`,{
+    theme: "dark",
+    transition: Slide,
+    autoClose: 1700,
+  });
 };
 
        // text
@@ -53,7 +68,13 @@ const newText = (card) => {
     name: card.name,
     date: formattedDate,
   };
+  
 setCallHistory([...callHistory, newCallDetails]);
+  toast.success(`Text with ${card.name}`,{
+    theme: "dark",
+    transition: Slide,
+    autoClose: 1700,
+  });
 };
     // Video
 const newVideo = (card) => {
@@ -65,28 +86,13 @@ const newVideo = (card) => {
   };
 setCallHistory([...callHistory, newCallDetails]);
 
+  toast.success(`Video with ${card.name}`,{
+    theme: "dark",
+    transition: Slide,
+    autoClose: 1700,
+  });
+
 }
-
-
-
-  
-  // const AllCardContext = useContext(AllCardContext)
- 
-  // const [storedCards, setStoredCards] = useState([]);
-
-  //  const handleCall = (currentCard) =>{
-  //  console.log(currentCard);
-
-  //   const isExistCard = storedCards.find((card) => card.id === currentCard. id);
-
-  //   if(isExistCard){
-  //       alert("card already exist");
-  //   }else{
-  //       setStoredCards([...storedCards, currentCard])
-  //   }
-  //   console.log(currentCard,storedCards, "cardId");
-  //  };
-
 
 
   return (

@@ -1,19 +1,33 @@
 import { useContext } from "react";
 import { IoMdArrowDropdownCircle } from 'react-icons/io';
 import { AllCardContext } from "../../context/AllCardProvider";
+import { IoTimerOutline, IoVideocam } from "react-icons/io5";
+
+import { FiPhoneCall } from "react-icons/fi";
+// import { title } from "framer-motion/client";
+import { BsChatSquareTextFill } from "react-icons/bs";
+
 
 const TimeLine = () => {
-  const { callHistory } = useContext(AllCardContext);
+  
+const { callHistory } = useContext(AllCardContext);
+
+const logos ={
+  Call: <FiPhoneCall />,
+  Text:<BsChatSquareTextFill /> ,
+  Video: <IoVideocam />,
+};
+// console.log(title)
 
   return (
-    <div className='container mx-auto'>
+    <div className='container mx-auto mb-96'>
 
       <h1 className='font-bold text-3xl py-5'>Timeline</h1>
 
       {/* dropdown */}
-      <div className='my-5'>
+      <div className='mb-5'>
         <button
-          className="btn w-full max-w-xs"
+          className="btn  max-w-xs"
           popoverTarget="popover-1"
           style={{ anchorName: "--anchor-1" }}>
           Filter timeline
@@ -34,18 +48,53 @@ const TimeLine = () => {
       {/* timeline */}
       <div>
         {callHistory.length === 0 ? (
-          <p className="text-2xl font-semibold text-gray-500 text-center my-10">No history found</p>
+        <div className="flex flex-col items-center justify-center border border-dashed border-gray-300 rounded-2xl py-16 my-10 bg-gradient-to-br from-gray-50 to-gray-100 shadow-sm">
+
+             {/* icon */}
+             <div className="bg-white p-5 rounded-full shadow-md mb-4">
+               <IoTimerOutline className="text-4xl text-green-600" />
+             </div>
+           
+              {/* title */}
+              <h2 className="text-2xl font-semibold text-gray-700">
+                No Timeline Yet
+              </h2>
+              <p className="text-gray-500 mt-2 text-center max-w-sm">
+                You haven’t made any calls yet. Start connecting with people and your activity will appear here.
+              </p>
+
+              {/* button */}
+              <button className="mt-5 px-5 py-2 rounded-full bg-green-500 text-white hover:bg-green-600 transition">
+                Go back home
+              </button>
+
+      </div>
+
         ) : (
           callHistory.map((item) => (
-            <div key={item.id} className="flex gap-3 items-center mb-4">
+        <div key={item.id} className="mb-4">
 
-              <div>
-                <img src={item.title} alt="" />
-                <p className="font-bold">{item.name}</p>
-                <p className="text-sm text-gray-500">{item.date}</p>
-              </div>
+    <div className="flex items-center gap-4 border border-gray-200 bg-white shadow-sm hover:shadow-md transition rounded-2xl p-4">
 
-            </div>
+    {/* icon / image */}
+       <div className=" p-3 bg-green-100 text-2xl rounded-4xl">
+         {logos[item.title]}
+        
+      </div>
+
+      {/* content */}
+      <div className="flex-1">
+         <p className="font-semibold text-gray-800">
+          <span>{item.title} with</span> <span className="text-green-600">{item.name}</span>
+        </p>
+
+        <p className="text-sm text-gray-500">
+          {item.date}
+        </p>
+      </div>
+    </div>
+
+     </div>
           ))
         )}
       </div>

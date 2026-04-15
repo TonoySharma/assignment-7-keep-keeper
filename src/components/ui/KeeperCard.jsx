@@ -17,7 +17,7 @@ const KeeperCard = ({ Card }) => {
                         <h2 className="text-lg font-bold">{Card.name}</h2>
 
                         <p className="text-sm text-gray-500">
-                            Days: {Card.days_since_contact}
+                         {Card.days_since_contact}d ago
                         </p>
 
                         <p className={`text-sm font-semibold  ${
