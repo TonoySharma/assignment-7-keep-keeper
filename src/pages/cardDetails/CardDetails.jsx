@@ -43,14 +43,6 @@ const newCall = (card) => {
     date: formattedDate,
   };
   
-  // if (isExist) {
-  //   toast.error("Already called!",{
-  //     theme: "dark",
-  //     transition: Slide,
-  //     autoClose: 1700,
-  //   });
-  //   return;
-  // }
 
 setCallHistory([...callHistory, newCallDetails]);
   toast.success(`Call with ${card.name}`,{

@@ -1,16 +1,61 @@
-import { useContext } from "react";
-import { IoMdArrowDropdownCircle } from 'react-icons/io';
+import { useContext, useMemo, useState } from "react";
+import { IoMdArrowDropdownCircle, IoMdCall } from 'react-icons/io';
 import { AllCardContext } from "../../context/AllCardProvider";
 import { IoTimerOutline, IoVideocam } from "react-icons/io5";
-
 import { FiPhoneCall } from "react-icons/fi";
-// import { title } from "framer-motion/client";
 import { BsChatSquareTextFill } from "react-icons/bs";
+import { Link } from "react-router";
+import { MdArrowBackIos, MdTextsms } from "react-icons/md";
+import { TbLayoutDashboardFilled } from "react-icons/tb";
+
+
+
 
 
 const TimeLine = () => {
   
 const { callHistory } = useContext(AllCardContext);
+
+// const [filterData, setFilterData] = useState(callHistory);console.log(filterData, 'filterData');
+
+// useEffect(() => {
+
+//   let data = callHistory;
+
+//   if (filter === "Text") {
+//     data = callHistory.filter((item) => item.title === "Text");
+//   } 
+//   if (filter === "Video") {
+//     data = callHistory.filter((item) => item.title === "Video");
+//   } 
+//    if (filter === "Call") {
+//     data = callHistory.filter((item) => item.title === "Call");
+//   } 
+//   if (filter === "See all history") {
+//     data = callHistory;
+//   }
+
+//   return callHistory
+// }, [filter, callHistory]);
+
+const [filter, setFilter] = useState("See all history");
+
+const filterHistory = useMemo (()=> {
+ if(filter === "See all history"){
+  return callHistory;
+ }
+ if(filter === "Text"){
+  return callHistory.filter((text)=>text.title === "Text");
+ }
+  if(filter === "Video"){
+  return callHistory.filter((video)=>video.title === "Video");
+ }
+ if(filter === "Call"){
+  return callHistory.filter((call)=>call.title === "Call");
+ }
+ return callHistory
+}, [filter, callHistory]);
+
 
 const logos ={
   Call: <FiPhoneCall />,
@@ -20,9 +65,10 @@ const logos ={
 // console.log(title)
 
   return (
+
     <div className='container mx-auto mb-96'>
 
-      <h1 className='font-bold text-3xl py-5'>Timeline</h1>
+      <h1 className='font-bold text-3xl py-5'>Time<span className="text-green-600">line</span></h1>
 
       {/* dropdown */}
       <div className='mb-5'>
@@ -30,18 +76,17 @@ const logos ={
           className="btn  max-w-xs"
           popoverTarget="popover-1"
           style={{ anchorName: "--anchor-1" }}>
-          Filter timeline
+          {filter}
           <IoMdArrowDropdownCircle className='text-xl ml-10' />
         </button>
 
-        <ul
-          className="dropdown menu w-52 rounded-box bg-base-100 shadow-sm"
-          popover="auto"
-          id="popover-1"
+        <ul className="dropdown menu w-52 rounded-box bg-base-100 shadow-sm"
+          popover="auto" id="popover-1"
           style={{ positionAnchor: "--anchor-1" }}>
-          <li><a>Call</a></li>
-          <li><a>Text</a></li>
-          <li><a>Video</a></li>
+          <li className={filter === "Call" ? " bg-green-500 text-white rounded" : ""} onClick={()=> setFilter('Call')}><a><IoMdCall />Call</a></li>
+          <li className={filter === "Text" ? "bg-green-500 text-white rounded" : ""} onClick={()=> setFilter('Text')}><a><MdTextsms />Text</a></li>
+          <li className={filter === "Video" ? "bg-green-500 text-white rounded" : ""} onClick={()=> setFilter('Video')}><a><IoVideocam />Video</a></li>
+          <li className={filter === "See all history" ? "bg-green-500 text-white rounded" : ""} onClick={()=> setFilter('See all history')}><a><TbLayoutDashboardFilled />All History</a></li>
         </ul>
       </div>
 
@@ -64,14 +109,16 @@ const logos ={
               </p>
 
               {/* button */}
-              <button className="mt-5 px-5 py-2 rounded-full bg-green-500 text-white hover:bg-green-600 transition">
-                Go back home
-              </button>
+               <Link to="/">
+                    <button className="mt-5 px-5 py-2 rounded-full bg-green-300 hover:bg-green-500 text-black cursor-pointer flex items-center">
+                      <MdArrowBackIos /> Go back home
+                    </button>
+                </Link>
 
       </div>
 
         ) : (
-          callHistory.map((item) => (
+          filterHistory.map((item) => (
         <div key={item.id} className="mb-4">
 
     <div className="flex items-center gap-4 border border-gray-200 bg-white shadow-sm hover:shadow-md transition rounded-2xl p-4">
