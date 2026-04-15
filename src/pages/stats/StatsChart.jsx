@@ -1,50 +1,63 @@
-import React, { useContext } from "react";
-import { AllCardContext } from "../../context/AllCardProvider";
-import { RiDonutChartFill } from "react-icons/ri";
-import { Link } from "react-router";
-import { MdArrowBackIos } from "react-icons/md";
+import React, { useContext, useMemo } from 'react';
+import { Legend, Pie, PieChart, Tooltip, ResponsiveContainer } from 'recharts';
+import { AllCardContext } from '../../context/AllCardProvider';
 
 const StatsChart = () => {
+
   const { callHistory } = useContext(AllCardContext);
+
+  const data = useMemo(() => {
+    const counts = {
+      Call: 0,
+      Text: 0,
+      Video: 0,
+    };
+
+    callHistory.forEach((item) => {
+      if (counts[item.title] !== undefined) {
+        counts[item.title]++;
+      }
+    });
+
+    return [
+      { name: 'Call', value: counts.Call, fill: '#00C49F' },
+      { name: 'Text', value: counts.Text, fill: '#713199' },
+      { name: 'Video', value: counts.Video, fill: '#F72C05' },
+    ];
+  }, [callHistory]);
 
   return (
     <div className='container mx-auto'>
 
-      <h1 className='font-bold text-3xl py-5'>
-        Friendship Analytics
-      </h1>
+      <div>
+        <h1 className='font-bold text-3xl py-5'>
+          Friendship Analytics
+        </h1>
+      </div>
 
-      {callHistory.length === 0 ? (
-        
-       <div>
-           <div className="flex flex-col items-center justify-center border border-dashed border-gray-300 rounded-2xl py-16 my-10 bg-gradient-to-br from-gray-50 to-gray-100 shadow-sm">
-          
-          <div className="bg-white p-5 rounded-full shadow-md mb-4">
-            <RiDonutChartFill className="text-4xl text-purple-600" />
-          </div>
+      <div className='flex justify-center my-16 shadow rounded-2xl p-10 border border-dashed border-slate-300'>
 
-          <h2 className="text-2xl font-semibold text-gray-700">
-            No data yet
-          </h2>
+        <div className="w-full h-[300px] md:h-[400px]">
 
-          <p className="text-gray-500 mt-2 text-center max-w-sm">
-            Make a call, send a text, or start a video to see your stats.
-          </p>
-
-         <Link to="/">
-             <button className="mt-5 px-5 py-2 rounded-full bg-purple-300 hover:bg-purple-500 text-black cursor-pointer flex items-center">
-                  <MdArrowBackIos  className="transition-transform duration-300 group-hover:-translate-x-1" /> 
-                  Go back home
-              </button>
-          </Link>
+          <ResponsiveContainer width="100%" height="100%">
+            <PieChart>
+              <Pie
+                data={data}
+                innerRadius="70%"
+                outerRadius="100%"
+                cornerRadius={10}
+                paddingAngle={5}
+                dataKey="value"
+                isAnimationActive={true}
+              />
+              <Legend />
+              <Tooltip />
+            </PieChart>
+          </ResponsiveContainer>
 
         </div>
-       </div>
 
-      ) : (
-        ""
-
-      )}
+      </div>
 
     </div>
   );
