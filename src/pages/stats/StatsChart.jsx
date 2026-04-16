@@ -27,7 +27,7 @@ const StatsChart = () => {
   }, [callHistory]);
 
   return (
-    <div className='container mx-auto'>
+    <div className='container mx-auto px-4 sm:px-6 lg:px-0'>
 
       <div>
         <h1 className='font-bold text-3xl py-5'>
@@ -35,30 +35,31 @@ const StatsChart = () => {
         </h1>
       </div>
 
-      <div className='flex justify-center my-16 shadow rounded-2xl p-10 border border-dashed border-slate-300'>
+      <div className=' justify-center my-16 shadow rounded-2xl p-10 border border-dashed border-slate-400 bg-base-200'>
+        <div className='md:text-lef'>
+          <h1 className='text-lg md:text-xl font-semibold text-gray-600'>By Interaction Type</h1>
+        </div>
 
-        <div className="w-full h-[300px] md:h-[400px]">
+        <div className="w-full h-[300px] md:h-[400px] mt-10">
 
-          <ResponsiveContainer width="100%" height="100%">
+          <ResponsiveContainer width="100%" height="90%">
             <PieChart>
               <Pie
                 data={data}
                 innerRadius="70%"
                 outerRadius="100%"
-                cornerRadius={10}
+                cornerRadius={12}
                 paddingAngle={5}
                 dataKey="value"
-                isAnimationActive={true}
-              />
+                isAnimationActive={true}/>
+
+
               <Legend />
               <Tooltip />
             </PieChart>
           </ResponsiveContainer>
-
         </div>
-
       </div>
-
     </div>
   );
 };

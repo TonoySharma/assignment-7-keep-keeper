@@ -14,7 +14,7 @@ const Cards = use(cardPromise)
         <div className='container mx-auto mt-10'>
             {/* All Card */}
             <div>
-                <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6'>
+                <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4 sm:px-6 lg:px-0'>
       {
         Cards.map((Card, ind )=> {
             return (

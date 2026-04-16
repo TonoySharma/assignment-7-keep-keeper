@@ -5,7 +5,7 @@ import { LuLinkedin } from 'react-icons/lu';
 
 const Footer = () => {
     return (
-        <div className='bg-[#244D3F] text-white mt-10'>
+        <div className='bg-[#244D3F] text-white mt-10 '>
             
             <div className='container mx-auto px-4 py-10'>
                 

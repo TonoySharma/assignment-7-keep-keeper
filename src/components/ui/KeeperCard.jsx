@@ -8,7 +8,7 @@ const KeeperCard = ({ Card }) => {
     return (
             <Link to={`/cardDetails/${Card.id}`} className=" bg-gray-100 shadow-sm rounded-2xl border border-gray-300 p-5 hover:shadow-2xl transition-all duration-300">
                     
-                    <div className="flex flex-col items-center text-center space-y-3">
+                    <div className="flex flex-col items-center text-center space-y-3 ">
                         
                         <img
                             src={Card.picture} alt=""

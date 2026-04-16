@@ -10,38 +10,14 @@ import { TbLayoutDashboardFilled } from "react-icons/tb";
 
 
 
-
-
 const TimeLine = () => {
   
 const { callHistory } = useContext(AllCardContext);
 
-// const [filterData, setFilterData] = useState(callHistory);console.log(filterData, 'filterData');
-
-// useEffect(() => {
-
-//   let data = callHistory;
-
-//   if (filter === "Text") {
-//     data = callHistory.filter((item) => item.title === "Text");
-//   } 
-//   if (filter === "Video") {
-//     data = callHistory.filter((item) => item.title === "Video");
-//   } 
-//    if (filter === "Call") {
-//     data = callHistory.filter((item) => item.title === "Call");
-//   } 
-//   if (filter === "See all history") {
-//     data = callHistory;
-//   }
-
-//   return callHistory
-// }, [filter, callHistory]);
-
-const [filter, setFilter] = useState("See all history");
+const [filter, setFilter] = useState("All activities");
 
 const filterHistory = useMemo (()=> {
- if(filter === "See all history"){
+ if(filter === "All activities"){
   return callHistory;
  }
  if(filter === "Text"){
@@ -66,9 +42,9 @@ const logos ={
 
   return (
 
-    <div className='container mx-auto mb-96'>
+    <div className='container mx-auto mb-40 px-4 sm:px-6 lg:px-0 mt-5'>
 
-      <h1 className='font-bold text-3xl py-5'>Time<span className="text-green-600">line</span></h1>
+      <h1 className='font-bold text-3xl lg:px-0 my-3'>Time<span className="text-green-600">line</span></h1>
 
       {/* dropdown */}
       <div className='mb-5'>
@@ -83,17 +59,26 @@ const logos ={
         <ul className="dropdown menu w-52 rounded-box bg-base-100 shadow-sm"
           popover="auto" id="popover-1"
           style={{ positionAnchor: "--anchor-1" }}>
-          <li className={filter === "Call" ? " bg-green-500 text-white rounded" : ""} onClick={()=> setFilter('Call')}><a><IoMdCall />Call</a></li>
-          <li className={filter === "Text" ? "bg-green-500 text-white rounded" : ""} onClick={()=> setFilter('Text')}><a><MdTextsms />Text</a></li>
-          <li className={filter === "Video" ? "bg-green-500 text-white rounded" : ""} onClick={()=> setFilter('Video')}><a><IoVideocam />Video</a></li>
-          <li className={filter === "See all history" ? "bg-green-500 text-white rounded" : ""} onClick={()=> setFilter('See all history')}><a><TbLayoutDashboardFilled />All History</a></li>
+
+          <li className={filter === "All activities" ? "bg-green-500 text-white rounded" : ""}
+             onClick={()=> setFilter('All activities')}><a><TbLayoutDashboardFilled /> All activities</a></li>
+
+          <li className={filter === "Call" ? " bg-green-500 text-white rounded" : ""} 
+          onClick={()=> setFilter('Call')}><a><IoMdCall />Call</a></li>
+
+          <li className={filter === "Text" ? "bg-green-500 text-white rounded" : ""} 
+          onClick={()=> setFilter('Text')}><a><MdTextsms />Text</a></li>
+
+          <li className={filter === "Video" ? "bg-green-500 text-white rounded" : ""} 
+          onClick={()=> setFilter('Video')}><a><IoVideocam />Video</a></li>
+         
         </ul>
       </div>
 
       {/* timeline */}
       <div>
         {callHistory.length === 0 ? (
-        <div className="flex flex-col items-center justify-center border border-dashed border-gray-300 rounded-2xl py-16 my-10 bg-gradient-to-br from-gray-50 to-gray-100 shadow-sm">
+        <div className="flex flex-col items-center justify-center border border-dashed border-gray-300 rounded-2xl py-16 my-10 bg-gradient-to-br from-gray-50 to-gray-100 shadow-sm ">
 
              {/* icon */}
              <div className="bg-white p-5 rounded-full shadow-md mb-4">
@@ -110,11 +95,11 @@ const logos ={
 
               {/* button */}
                <Link to="/">
-                    <button className="mt-5 px-5 py-2 rounded-full bg-green-300 hover:bg-green-500 text-black cursor-pointer flex items-center">
-                      <MdArrowBackIos /> Go back home
-                    </button>
-                </Link>
-
+                   <button className="btn btn-outline btn-success mt-5 px-5 py-2 rounded-full bg-green-200 hover:bg-green-500 text-black cursor-pointer flex items-center">
+                    <MdArrowBackIos />
+                    Success
+                   </button>
+              </Link>
       </div>
 
         ) : (
