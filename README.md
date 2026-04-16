@@ -1,4 +1,4 @@
- 1= Name of your project: Keen Keeper
+ 1= My project Name: Keen Keeper
 
  2= description:
      Keen Keeper is a relationship management web application that helps 
