@@ -31,13 +31,13 @@ const StatsChart = () => {
 
       <div>
         <h1 className='font-bold text-3xl py-5'>
-          Friendship Analytics
+          Friendship <span className='text-green-600'>Analytics</span>
         </h1>
       </div>
 
       <div className=' justify-center my-16 shadow rounded-2xl p-10 border border-dashed border-slate-400 bg-base-200'>
         <div className='md:text-lef'>
-          <h1 className='text-lg md:text-xl font-semibold text-gray-600'>By Interaction Type</h1>
+          <h1 className='text-lg md:text-xl font-semibold text-gray-700'>By Interaction Type</h1>
         </div>
 
         <div className="w-full h-[300px] md:h-[400px] mt-10">

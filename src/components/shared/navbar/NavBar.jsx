@@ -69,15 +69,12 @@ const NavBar = () => {
             </ul>
           </div>
         </div>
-
-        {/* Logo */}
         <div className="flex-1">
           <a className="text-xl sm:text-2xl font-bold">
             Keen <span className="text-green-600">Keeper</span>
           </a>
         </div>
 
-        {/* Desktop menu */}
         <div className="hidden lg:flex">
           <ul className="menu menu-horizontal gap-6 px-1 font-medium">
             {links}
